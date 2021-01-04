@@ -7,4 +7,3 @@ class CreatePokedexes < ActiveRecord::Migration
     end
   end
 end
-.
