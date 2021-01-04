@@ -3,9 +3,9 @@ require './config/environment'
 class ApplicationController < Sinatra::Base
 
   configure do
-    enable :sessions
     set :public_folder, 'public'
     set :views, 'app/views'
+    enable :sessions
     set :session_secret, "hotdog"
   end
 
@@ -17,13 +17,25 @@ class ApplicationController < Sinatra::Base
     @trainer = Trainer.create(username: params[:username], password_digest: params[:password])
     session[:id] = @trainer.id
     redirect "/home"
+
   end
 
   get '/home' do 
-    erb :home
+    if logged_in?
+      erb :home
+    else
+      redirect "/"
+    end
   end
 
-  get '/signup' do
-    "hi"
+   def current_user
+    @current_user ||= Trainer.find_by_id(session[:id])
+   end
+
+   helpers do
+    def logged_in?
+    current_user !=nil
+   end
   end
-end
+
+
