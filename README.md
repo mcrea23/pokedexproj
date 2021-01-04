@@ -2,7 +2,7 @@
 <p>
 </p>
 
-> Sinatra Content Management System App Assessment
+> Sinatra application to collect and view Pokemon through a Pokedex
 
 ## Author
 
