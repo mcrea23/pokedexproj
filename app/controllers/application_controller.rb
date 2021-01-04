@@ -13,4 +13,17 @@ class ApplicationController < Sinatra::Base
     erb :welcome
   end
 
+  post "/signup" do
+    @trainer = Trainer.create(username: params[:username], password_digest: params[:password])
+    session[:id] = @trainer.id
+    redirect "/home"
+  end
+
+  get '/home' do 
+    erb :home
+  end
+
+  get '/signup' do
+    "hi"
+  end
 end
