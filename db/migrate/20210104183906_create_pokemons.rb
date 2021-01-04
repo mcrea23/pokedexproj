@@ -10,3 +10,4 @@ class CreatePokemons < ActiveRecord::Migration
     end
   end
 end
+js;bjd
